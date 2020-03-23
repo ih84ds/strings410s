@@ -1,0 +1,19 @@
+version: "3.5"
+services:
+  ui:
+    build:
+      context: "."
+      target: development
+    volumes:
+      - ".:/home/node/app"
+    environment:
+      NODE_ENV: development
+      HOST: "0.0.0.0"
+      PORT: "41010"
+    ports:
+      # node inspector port
+      # - "9229:9229"
+      # http port
+      - "41010:41010"
+    working_dir: "/home/node/app"
+    command: [yarn, serve]
